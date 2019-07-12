@@ -1,0 +1,30 @@
+<div nz-row nzGutter="16" nzType="flex" nzJustify="center">
+  <div nz-col nzSpan="6">
+    <nz-select
+    style="width: 100%"
+    nzShowSearch
+    nzAllowClear
+    nzPlaceHolder="Select a category"
+    [(ngModel)]="request.category">
+      <nz-option *ngFor="let item of categories" [nzLabel]="item.name" [nzValue]="item.id"></nz-option>
+    </nz-select>
+  </div>
+
+  <div nz-col nzSpan="6">
+      <input nz-input placeholder="Enter Delivery Address" [(ngModel)]="request.address" />
+  </div>
+
+  <div nz-col nzSpan="6">
+      <button nz-button style="background-color: #2B5B66" (click)="getPrices()" nzType="primary">Get Products</button>
+  </div>
+  
+</div>
+
+<div nzRow>
+  <h2 nz-title style="color: #FC6565; margin-top: 30px">Products</h2>
+  <nz-card nzHoverable *ngFor="let item of products">
+    <h3 nz-title> {{item.name}} </h3>
+    <h3 nz-title>Delivery Cost: {{item.delivery_rate | currency:'EUR'}}</h3>
+  </nz-card>
+
+</div>
